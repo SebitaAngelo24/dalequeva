@@ -1,0 +1,9 @@
+Completar Ejercitacion Museos
+
+	https://labsys.frc.utn.edu.ar/gitlab/desarrollo-de-software1/proyectos2024/3k4/repos-guias/frontend_backend_museos
+
+	**Agregar un filtro para buscar por el nombre del museo.
+
+Ejercitacion 2:
+
+	https://labsys.frc.utn.edu.ar/gitlab/desarrollo-de-software1/materiales/semana-06/-/blob/main/apunte-13/pap_express_sequelize/pap_express_sequelize.md

@@ -1,0 +1,113 @@
+1) Abrir la carpeta front en VS
+
+2) Instalar todos los paquetes utilizados hasta el momento no presentes debido a que no existe la carpeta node_mdules
+
+3) Crear el componente Menu.jsx
+
+4) En el componente Menu importar: 
+	- React
+	- Link desde react-router-dom
+	- styles.css
+
+5) En el componente Menu agregar:
+	- Un div
+	- Un titulo (h#)
+	- Un botón que navegue a la ruta '/registro'
+
+6) Crear el componente Consulta.jsx
+
+7) En el componente Consulta importar: 
+	- React
+
+8) El componente Consulta debe recibir los datos a mostrar y el manejador del evento para el click del botón volver
+
+9) En el componente Consulta agregar:
+	- Un div
+ 	- Dentro del div agregar un titulo que indique de que se trata el listado
+	- Dentro del div agregar una tabla para mostrar los datos recibidos
+	- Dentro del div agregar un botón que devuelva el control al componente de registro
+
+10) Crear un servicio de reservas para obtener las reservas y registrar una nueva. El mismo deberá implementar los siguientes métodos
+	- getReservas()
+	- saveReserva(reserva)
+	
+11) Crear el componente Registro.jsx
+
+12) En el componente Registro importar:
+	- React
+	- useState
+	- useForm desde react-router-dom
+	- El servicio de reservas
+	- El componente Consulta.jsx
+	- styles.css
+
+13) El componente Registro debe mantener el estado de algunos datos para y valores para gestionar el estado del componente
+	- const [action, setAction] = useState('R')
+	- const [rows, setRows] = useState([])
+	- const {register, handleSubmit, formState: { errors }} = useForm()
+
+14) Este componente debe implementar
+	- onSubmit
+	- loadData
+	- onVolver
+	
+15) onSubmit debe:
+	- llamar a saveReserva del servicio de reservas
+	- llamar a loadData
+	- establecer el estado action = 'C' a travez de setAction('C')
+
+16) loadData debe:
+	- llamar a getReservas el servicio de reservas
+	- asignar los registros a una estructura de datos controlada or react (useState)
+
+17) onVolver debe
+	- establecer el estado action = 'R' a travez de setAction('R')
+
+
+18) La sección del componente que devuelve HTML deberá contener 
+      <div className='container_app'>
+	 {
+           action === 'R' && (
+             <form onSubmit={handleSubmit(onSubmit)}>
+		<div className="form-group">
+                   <label htmlFor="Dni">DNI reserva:</label>
+                   <input type="text" className="form-control" id="Dni"  {...register("Dni", { required: 'Este campo es requerido' })}/>
+                   {errors.dni && <span className='error'>{errors.dni.message}</span>}
+                </div>
+                <div className="form-group">
+                   <label htmlFor="FechaIngreso">Fecha ingreso:</label>
+                   <input type="date" ....
+   		   {errors.fechaIngreso ....
+                </div>
+                <div className="form-group">
+                   <label htmlFor="FechaSalida">Fecha salida:</label>
+                   <input type="date" ....
+                </div>
+                <div className="form-group">
+                   <label htmlFor="Huespedes">Cantidad de huéspedes:</label>
+                   <input type="number" ....
+                   {errors.huespedes ....
+                </div>
+                <div className="form-group" >
+                   <label htmlFor="stay">Tipo de estadía:</label>
+                   <select className="form-control" id="TipoEstadia" {...register("TipoEstadia", { required: 'Este campo es requerido' })}>
+                      <option value="Pension completa">Pensión completa</option>
+                      <option value="Media pensión">Media Pensión</option>
+                      <option value="Solo estadía">Solo estadía</option>
+                   </select>
+                   {errors.tipoEstadia 
+                </div>
+		<div className="form-group text-center mt-3">
+                   <button type="submit" className="btn btn-primary mx-1">Registrar</button>
+                   <button type="reset" className="btn btn-secondary mx-1">Limpiar</button>
+                </div>
+	     </form>
+             )
+         }
+         {
+           action !== 'R' && (
+             <Consulta rows = {rows} onVolver={onVolver}></Consulta>
+             )
+         }
+     </div >
+
